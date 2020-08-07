@@ -1,26 +1,33 @@
+// src/components/Header/Navigation.js
 import React from "react";
-import { NavLink } from "react-router-dom";
-import Navbar from "react-bootstrap/Navbar";
-import Nav from "react-bootstrap/Nav";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
+import { BrowserRouter as Router, NavLink } from "react-router-dom";
 
-export default function Navigation(props) {
+export default function Navigation() {
   return (
-    <Navbar bg="light" expand="lg">
-      <Container>
-        <Row>
-          <Navbar.Brand href="#home">Stijn Huiskes</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="mr-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#work">Work</Nav.Link>
-              <Nav.Link href="#contact">Contact</Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
-        </Row>
-      </Container>
-    </Navbar>
+    <div>
+      <nav className="navbar navbar-expand-lg navbar-light bg-light mb-5">
+        <div className="container">
+          <div className="navbar-brand">Stijn Huiskes</div>
+
+          <ul className="navbar-nav ml-auto">
+            <li className="nav-item">
+              <NavLink className="nav-link" exact to="/">
+                Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink className="nav-link" to="/Portfolio">
+                Portfolio
+              </NavLink>
+            </li>
+            <li>
+              <NavLink className="nav-link" to="/contact">
+                Contact
+              </NavLink>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
   );
 }
