@@ -1,8 +1,10 @@
 // src/style/_config.scss
 
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap");
-
-$headings-font-family: "Noto Sans JP", sans-serif;
+$headings-font-family: "soleil", sans-serif;
 $headings-font-weight: 800;
+$font-family-base: "soleil", sans-serif;
 
-$font-family-base: "Noto Sans JP", sans-serif;
+$theme-colors: (
+  "primary": #20c98b,
+  "danger": #ff4136,
+);

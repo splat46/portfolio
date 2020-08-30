@@ -2,18 +2,4 @@
 
 @import "./config";
 @import "~bootstrap";
-
-$white: #ffffff;
-$lightGrey: #f7f7f7;
-
-.header {
-  background-color: $lightGrey;
-  text-align: center;
-
-  &__content {
-    padding: 4rem 0;
-  }
-  svg.shape-fill-white {
-    fill: $white;
-  }
-}
+@import "./main";
