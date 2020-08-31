@@ -9,7 +9,7 @@ function signupSuccess(token) {
     payload: token,
   };
 }
-
+// Thunk to send a request to signUp to the backend
 export function signUp(email, password, firstName, lastName) {
   return async function (dispatch, getState) {
     console.log("inside thunk", email, password, firstName, lastName);
@@ -20,7 +20,11 @@ export function signUp(email, password, firstName, lastName) {
         email: email,
         password: password,
       });
-      console.log("RES:", response);
+      console.log("RES:", response.data.token);
+      const token = response.data.token;
+      const action = signupSuccess(token);
+      console.log("action:", action);
+      dispatch(action);
     } catch (error) {
       console.log(error);
     }
