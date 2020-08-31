@@ -14,7 +14,6 @@ export default function SignupPage() {
   function handleSubmit(event) {
     event.preventDefault();
     dispatch(signUp(email, password, firstname, lastname, phone));
-    console.log("data in form:", email, password, firstname, lastname, phone);
   }
 
   return (

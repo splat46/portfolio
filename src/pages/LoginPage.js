@@ -1,15 +1,16 @@
 // src/pages/LoginPage.js
 import React, { useState } from "react";
+import { signIn } from "../store/user/actions";
+import { useDispatch } from "react-redux";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
 
   function handleSubmit(event) {
     event.preventDefault();
-
-    // TODO
-    console.log("TODO login with:", email, password);
+    dispatch(signIn(email, password));
   }
 
   return (

@@ -1,17 +1,41 @@
 import axios from "axios";
 
-export function signUp(email, password, firstname, lastname, phone) {
+const API_URL = "http://localhost:5000";
+
+const SIGNUP_SUCCESS = "SIGNUP SUCCESS";
+function signupSuccess(token) {
+  return {
+    type: SIGNUP_SUCCESS,
+    payload: token,
+  };
+}
+
+export function signUp(email, password, firstName, lastName) {
   return async function (dispatch, getState) {
-    console.log("inside thunk", email, password, firstname, lastname, phone);
+    console.log("inside thunk", email, password, firstName, lastName);
     try {
-      const response = await axios.post(`http://localhost:5000/signup`, {
-        firstName: firstname,
-        lastName: lastname,
-        phone: phone,
+      const response = await axios.post(`${API_URL}/signup`, {
+        firstName: firstName,
+        lastName: lastName,
         email: email,
         password: password,
       });
-      console.log(response);
+      console.log("RES:", response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
+export function signIn(email, password) {
+  return async function (dispatch, getState) {
+    console.log("inside thunk", email, password);
+    try {
+      const response = await axios.post(`${API_URL}/login`, {
+        email: email,
+        password: password,
+      });
+      console.log("RES:", response);
     } catch (error) {
       console.log(error);
     }
