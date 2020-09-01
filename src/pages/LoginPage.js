@@ -1,7 +1,13 @@
 // src/pages/LoginPage.js
 import React, { useState } from "react";
-import { signIn } from "../store/user/actions";
+import { login } from "../store/user/actions";
 import { useDispatch } from "react-redux";
+
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -10,37 +16,42 @@ export default function LoginPage() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    dispatch(signIn(email, password));
+    dispatch(login(email, password));
   }
 
   return (
-    <div className="container">
-      <div className="row justify-content-center">
-        <div className="col-md-5">
-          <h1>Login Bitch</h1>
-          <form className="box box__padding box--grey" onSubmit={handleSubmit}>
-            <p>
-              <label>Email: </label>
-              <input
+    <Container>
+      <Row className="justify-content-center">
+        <Col md={5}>
+          <h1>Login</h1>
+          <Form className="box box__padding box--grey" onSubmit={handleSubmit}>
+            <Form.Group>
+              <Form.Label>Email: </Form.Label>
+              <Form.Control
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
-            </p>
-            <p>
-              <label>Password: </label>
-              <input
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Password: </Form.Label>
+              <Form.Control
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-            </p>
-            <p>
-              <button type="submit">Login</button>
-            </p>
-          </form>
-        </div>
-      </div>
-    </div>
+            </Form.Group>
+            <Form.Group>
+              <Button variant="primary" type="submit">
+                Login
+              </Button>
+            </Form.Group>
+            <a href="/signup" alt="Make a new account" className="mb-0">
+              Or register for a new account
+            </a>
+          </Form>
+        </Col>
+      </Row>
+    </Container>
   );
 }
